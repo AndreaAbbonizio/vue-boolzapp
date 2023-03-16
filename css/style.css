@@ -1,0 +1,299 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: #dadbd2;
+}
+
+.green-line{
+    height: 100px;
+    background-color: #009688;
+}
+
+/* container app */
+.container-boolzapp{
+    display: flex;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    width: 1000px;
+    height: 750px;
+    transform: translateX(-50%);
+}
+
+/* container left */
+.container-boolzapp .container-left{
+   
+    background-color: #ffffff;
+    height: 100%;
+    width: 40%;
+}
+
+/* container right */
+.container-boolzapp .container-right{
+    border-left: 1px solid rgba(0, 0, 0, 0.6);
+    width: 60%;
+    height: 100%;
+}
+
+
+
+
+/* container left */
+/* user container */
+.container-boolzapp .container-left .user-container{
+    display: flex;
+    justify-content: space-between;
+    background-color: #eaeaea;
+    height: 70px;
+}
+
+.container-boolzapp .container-left .user-container-left{
+    display: flex;
+    align-items: center;
+}
+
+
+.user-image{
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    
+}
+
+.user-image img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+
+.container-boolzapp .container-left .user-container-right{
+    display: flex;
+    align-items: center;
+    margin: 0 7px;
+}
+
+.container-boolzapp .container-left .user-container-right .fa-solid{
+    font-size: 1.6em;
+    color: #b1b1b1;
+    margin: 0 .2em;
+}
+
+
+
+/* /user container */
+
+
+
+/* notifications container */
+
+.container-boolzapp .container-left .notifications-container{
+    display: flex;
+    align-items: center;
+    background-color: #8edafc;
+}
+
+.container-boolzapp .container-left .notifications-container .fa-solid{
+    font-size: 1.8em;
+    padding: 9px;
+    border-radius: 50%;
+    background-color: white;
+    margin: 10px 10px;
+}
+
+.container-boolzapp .container-left .notifications-container .text-notifications p{
+    margin-bottom: .3em;
+}
+
+/* /notifications container */
+
+
+/* search contact */
+.container-boolzapp .container-left .search-contacts{
+    display: flex;
+    padding: 10px 0;
+    background-color: #fafafa;
+}
+
+.container-boolzapp .container-left .search-contacts .fa-solid{
+    padding: 5px 10px;
+    background-color: #ffffff;
+    height: 30px;
+    margin-left: 10px;
+    border: 1px solid #0000003b;
+}
+
+
+.container-boolzapp .container-left .search-contacts input{
+    width: 300px;
+    height: 30px;
+    background-color: #ffffff;
+    border: 1px solid #0000003b;
+}
+/* /search contact */
+
+
+
+
+/* container contacts */
+.container-boolzapp .container-left .container-contacts{
+    overflow-y: auto;
+    max-height: 560px;
+    height: 100%;
+}
+
+
+/* contact */
+.container-boolzapp .container-left .container-contacts .contact{
+    display: flex;
+    position: relative;
+    padding: 10px 0;
+    border-bottom: 1px solid #00000017;
+}
+
+.container-boolzapp .container-left .container-contacts .contact .image-contact{
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+}
+
+.container-boolzapp .container-left .container-contacts .contact .image-contact img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+
+.container-boolzapp .container-left .container-contacts .contact .text-contact .name-contact{
+    margin-bottom: .3em;
+}
+
+.container-boolzapp .container-left .container-contacts .contact .text-contact p{
+    color: #0000007a;
+}
+
+
+.container-boolzapp .container-left .container-contacts .contact .time{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+/* /contact */
+/* /container contact */
+
+/* /container left */
+
+
+
+
+/* container right */
+ .container-boolzapp .container-right .chat-contact{
+    height: 70px;
+    background-color: #eaeaea;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-boolzapp .container-right .chat-contact .chat-contact-left{
+    display: flex;
+    align-items: center;
+}
+
+.container-boolzapp .container-right .chat-contact .chat-contact-left .name-chat-contact{
+    padding-bottom: .3em;
+}
+
+.container-boolzapp .container-right .chat-contact .chat-contact-right{
+    display: flex;
+    align-items: center;
+    margin-right: .5em;
+}
+
+.container-boolzapp .container-right .chat-contact .chat-contact-right .fa-solid{
+    font-size: 1.3em;
+    color: #afb0b0;
+    margin: .3em;
+}
+
+
+.container-boolzapp .container-right .container-chat{
+    height: calc(100% - 120px);
+    background-image: url('../img/mine.jpg');
+}
+
+.container-boolzapp .container-right .container-chat .container-message-sent{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+    padding-top: 10px;
+}
+
+
+.container-boolzapp .container-right .container-chat .container-message-sent .message-sent{
+    width: 200px;
+    padding: 10px;
+    background-color: #d5f9ba;
+    border-radius: 10px;
+    margin-right: 50px;
+}
+
+.container-boolzapp .container-right .container-chat .container-message-received{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding-top: 10px;
+}
+
+.container-boolzapp .container-right .container-chat .container-message-received .message-received{
+    width: 200px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-left: 50px;
+}
+
+
+
+
+
+.container-boolzapp .container-right .container-keybord{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    background-color: #f3eeea;
+}
+
+.container-boolzapp .container-right .container-keybord .icon-keybord{
+    font-size: 1.4em;
+    color: #b1b1b1;
+    margin: 0 10px;
+}
+
+.container-boolzapp .container-right .container-keybord #keybord{
+    height: 30px;
+    width: 500px;
+    padding: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

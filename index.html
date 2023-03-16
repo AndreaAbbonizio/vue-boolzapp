@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolzap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="app">
+        <div class="green-line"></div>
+        <div class="container-boolzapp">
+            <div class="container-left">
+                <div class="user-container">
+                    <div class="user-container-left">
+                        <div class="user-image">
+                            <img  :src='contacts[0].avatar' alt="user-avatar">
+                        </div>
+                        <p id="name-user"><strong>Andrea</strong></p>
+                    </div>
+                    <div class="user-container-right">
+                        <i class="fa-solid fa-circle-notch"></i>
+                        <i class="fa-solid fa-message"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+                <div class="notifications-container">
+
+                    <i class="fa-solid fa-bell-slash"></i>
+                    <div class="text-notification">
+                        <p><strong>Ricevi notifiche dei tuoi nuovi messaggi</strong></p>
+                        <a href="#">Attivanotifiche dekstop</a>
+                    </div>
+                </div>
+                <div class="search-contacts">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Cerca un contatto">
+                </div>
+                <div class="container-contacts">
+                    <div v-for="contact in contacts" class="contact">
+                        <div class="image-contact">
+                            <img :src='contact.avatar' alt="contact image">
+                        </div>
+                        <div class="text-contact">
+                            <div class="name-contact"><strong>{{contact.name}}</strong></div>
+                            <p>Ultimo messaggio inviato</p>
+                        </div>
+                        <p class="time">12:00</p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="container-right">
+                <div class="chat-contact">
+                    <div class="chat-contact-left">
+                        <div class="user-image">
+                            <img :src='contacts[0].avatar' alt="chat contact image">
+                        </div>
+                        <div class="text-chat-contact">
+                            <div class="name-chat-contact">
+                                <strong>{{contacts[0].name}}</strong>
+                            </div>
+        
+                            <div class="last-login">
+                                Ultimo accesso alle 12:00
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="chat-contact-right">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+                <div  class="container-chat">
+                    <div class="container-message-sent">
+                        <div class="message-sent">{{contacts[0].messages[0].message}}</div>
+                        <div class="message-sent">{{contacts[0].messages[1].message}}</div>
+                    </div>
+                    <div class="container-message-received">
+                        <div class="message-received">{{contacts[0].messages[2].message}}</div>
+                    </div>
+                </div>
+                <div class="container-keybord">
+                    <i class="fa-regular fa-face-smile icon-keybord"></i>
+                    <input id="keybord" type="text" placeholder="scrivi un messaggio">
+                    <i class="fa-solid fa-microphone icon-keybord"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
