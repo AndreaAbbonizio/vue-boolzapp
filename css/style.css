@@ -21,7 +21,8 @@ body{
     position: absolute;
     top: 40px;
     left: 50%;
-    width: 1000px;
+    width: 100%;
+    max-width: 1200px;
     height: 750px;
     transform: translateX(-50%);
 }
@@ -223,39 +224,37 @@ body{
 .container-boolzapp .container-right .container-chat{
     height: calc(100% - 120px);
     background-image: url('../img/mine.jpg');
-}
-
-.container-boolzapp .container-right .container-chat .container-message-sent{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
     gap: 15px;
     padding-top: 10px;
 }
 
 
-.container-boolzapp .container-right .container-chat .container-message-sent .message-sent{
-    width: 200px;
+
+
+.sent{
+    align-self: flex-end;
+    min-width: 100px;
+    max-width: 50%;
     padding: 10px;
     background-color: #d5f9ba;
     border-radius: 10px;
-    margin-right: 50px;
+    margin-right: 30px;
 }
 
-.container-boolzapp .container-right .container-chat .container-message-received{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-    padding-top: 10px;
-}
 
-.container-boolzapp .container-right .container-chat .container-message-received .message-received{
-    width: 200px;
+
+
+
+.received{
+    align-self: flex-start;
+    min-width: 100px;
+    max-width: 50%;
     padding: 10px;
     background-color: #ffffff;
     border-radius: 10px;
-    margin-left: 50px;
+    margin-left: 30px;
 }
 
 
