@@ -157,6 +157,15 @@ body{
     border-bottom: 1px solid #00000017;
 }
 
+.container-boolzapp .container-left .container-contacts .contact:hover{
+    background-color: #aaa;
+}
+
+.container-boolzapp .container-left .container-contacts .contact.active{
+    background-color: #aaa;
+}
+
+
 .container-boolzapp .container-left .container-contacts .contact .image-contact{
     width: 50px;
     height: 50px;
@@ -258,7 +267,9 @@ body{
 }
 
 
-
+.active{
+    background-color: #aaa;
+}
 
 
 .container-boolzapp .container-right .container-keybord{

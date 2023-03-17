@@ -167,12 +167,39 @@ const { createApp } = Vue
             }
         ],
         indexActiveChat : 0,
-        
+        textMessage: '',
+        newMessage: {
+            date: '10/01/2020 15:50:00',
+            message: '',
+            status: 'sent',
+        },
+        receivedMessage: {
+            date: '10/01/2020 15:50:00',
+            message: 'ok',
+            status: 'received',
+        },
       }
     },
     methods :{
         changeChat(contact, index) {
             this.indexActiveChat = index;
+        },
+        sendMessage() {
+            let newChatMessage = this.contacts[this.indexActiveChat].messages;
+            console.log(newChatMessage);
+            let newReceivedMessage= this.receivedMessage;
+            this.newMessage.message = this.textMessage;
+            newChatMessage.push(this.newMessage);
+            setTimeout(function(){
+                newChatMessage.push(newReceivedMessage);
+            }, 1000);
+            this.newMessage = {
+                date: '10/01/2020 15:50:00',
+                message: '',
+                status: 'sent',
+            };
+            this.textMessage = '';
+
         }
     }
   }).mount('#app')
