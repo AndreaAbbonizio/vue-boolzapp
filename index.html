@@ -42,10 +42,10 @@
                 </div>
                 <div class="search-contacts">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Cerca un contatto">
+                    <input type="text" @keyup="searchContact()" v-model="searchText" placeholder="Cerca un contatto">
                 </div>
                 <div class="container-contacts">
-                    <div v-for="(contact,index) in contacts" :class=" index == indexActiveChat ? 'active' : ''" @click="changeChat(contact, index)" class="contact">
+                    <div v-for="(contact,index) in contacts" :class="[index == indexActiveChat ? 'active' : '' ,contact.visible  == false ? 'remove' : '']"  @click="changeChat(contact, index)" class="contact">
                         <div class="image-contact">
                             <img :src='contact.avatar' alt="contact image">
                         </div>

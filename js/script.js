@@ -178,6 +178,7 @@ const { createApp } = Vue
             message: 'ok',
             status: 'received',
         },
+        searchText: '',
       }
     },
     methods :{
@@ -200,6 +201,23 @@ const { createApp } = Vue
             };
             this.textMessage = '';
 
+        },
+        searchContact() {
+            let newSearch = this.searchText.toLowerCase();
+            console.log(newSearch);
+            this.contacts.forEach((contact,index) => {
+                
+                if(newSearch == ''){
+                    contact.visible = true;
+                    
+                }else if(contact.name.toLowerCase().includes(newSearch)){
+                    contact.visible = true;
+                    console.log(contact);
+                }else{
+                    contact.visible = false;
+                    console.log(contact);
+                };
+            });
         }
     }
   }).mount('#app')

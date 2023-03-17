@@ -165,6 +165,10 @@ body{
     background-color: #aaa;
 }
 
+.container-boolzapp .container-left .container-contacts .contact.remove{
+    display: none;
+}
+
 
 .container-boolzapp .container-left .container-contacts .contact .image-contact{
     width: 50px;
