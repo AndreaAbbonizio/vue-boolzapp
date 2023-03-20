@@ -188,6 +188,7 @@ body{
 
 .container-boolzapp .container-left .container-contacts .contact .text-contact p{
     color: #0000007a;
+    font-size: .8em;
 }
 
 
@@ -195,6 +196,7 @@ body{
     position: absolute;
     right: 10px;
     top: 10px;
+    font-size: .8em;
 }
 /* /contact */
 /* /container contact */
@@ -244,10 +246,24 @@ body{
 }
 
 
+.btn{
+    display: none;
+    padding-left: .5em;
+    padding-bottom: .5em;
+}
 
+.sent:hover .btn{
+    display: block;
+}
 
+.received:hover .btn{
+    display: block;
+}
 .sent{
+    display: flex;
+    justify-content: space-between;
     align-self: flex-end;
+    position: relative;
     min-width: 100px;
     max-width: 50%;
     padding: 10px;
@@ -261,7 +277,10 @@ body{
 
 
 .received{
+    display: flex;
+    justify-content: space-between;
     align-self: flex-start;
+    position: relative;
     min-width: 100px;
     max-width: 50%;
     padding: 10px;
@@ -270,6 +289,12 @@ body{
     margin-left: 30px;
 }
 
+.message-time{
+    font-size: .6em;
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+}
 
 .active{
     background-color: #aaa;

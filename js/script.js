@@ -169,42 +169,58 @@ const { createApp } = Vue
         indexActiveChat : 0,
         textMessage: '',
         newMessage: {
-            date: '10/01/2020 15:50:00',
+            date: '',
             message: '',
             status: 'sent',
         },
         receivedMessage: {
-            date: '10/01/2020 15:50:00',
-            message: 'ok',
+            date: '',
+            message: 'Ok',
             status: 'received',
         },
         searchText: '',
+        currentContact: null,
       }
     },
+
     methods :{
+        lengthMessage(){
+            return this.contacts[this.indexActiveChat].messages.length - 1;
+        },
         changeChat(contact, index) {
             this.indexActiveChat = index;
         },
         sendMessage() {
-            let newChatMessage = this.contacts[this.indexActiveChat].messages;
-            console.log(newChatMessage);
-            let newReceivedMessage= this.receivedMessage;
-            this.newMessage.message = this.textMessage;
-            newChatMessage.push(this.newMessage);
-            setTimeout(function(){
-                newChatMessage.push(newReceivedMessage);
-            }, 1000);
-            this.newMessage = {
-                date: '10/01/2020 15:50:00',
-                message: '',
-                status: 'sent',
+            if(this.textMessage != ''){
+                let newChatMessage = this.contacts[this.indexActiveChat].messages;
+                const currentDate = new Date();
+                const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}  ${currentDate.getHours()}:${currentDate.getMinutes()}`;
+                // Aggiungere la data e l'ora corrente al nuovo messaggio
+                this.newMessage.date = formattedDate;
+                this.receivedMessage.date = formattedDate;
+                let newReceivedMessage= this.receivedMessage;
+                this.newMessage.message = this.textMessage;
+                newChatMessage.push(this.newMessage);
+                setTimeout(function(){
+                    newChatMessage.push(newReceivedMessage);
+                }, 1000);
+                this.newMessage = {
+                    date: '10/01/2020 15:50:00',
+                    message: '',
+                    status: 'sent',
+                };
+                this.receivedMessage= {
+                    date:'',
+                    message: 'Ok',
+                    status: 'received',
+                };
+                this.textMessage = '';
+                this.lengthMessage();
             };
-            this.textMessage = '';
 
         },
         searchContact() {
             let newSearch = this.searchText.toLowerCase();
-            console.log(newSearch);
             this.contacts.forEach((contact,index) => {
                 
                 if(newSearch == ''){
@@ -212,12 +228,22 @@ const { createApp } = Vue
                     
                 }else if(contact.name.toLowerCase().includes(newSearch)){
                     contact.visible = true;
-                    console.log(contact);
                 }else{
                     contact.visible = false;
-                    console.log(contact);
                 };
-            });
-        }
+            });        
+        },
+        deleteMessage(messsage, index) {
+            if(this.contacts[this.indexActiveChat].messages.length <= 1){
+                this.contacts.splice(this.contacts[this.indexActiveChat], 1)
+            }else{
+                this.currentContact = this.contacts[this.indexActiveChat].messages
+                this.currentContact.splice(index, 1);
+            }
+        },
+
+        dateMessage(index) {
+           return this.contacts[this.indexActiveChat].messages[index].date.slice(11, 16);
+        },
     }
   }).mount('#app')
