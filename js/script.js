@@ -175,35 +175,47 @@ const { createApp } = Vue
         },
         receivedMessage: {
             date: '',
-            message: 'Ok',
+            message: '',
             status: 'received',
         },
         searchText: '',
         currentContact: null,
+        randomMessage: ['Scusami domani lavoro', 'Ok, questa sera ci sono', 'Non mi  funziona il telefono'],
       }
     },
 
     methods :{
+        //lunghezza array messages - 1
         lengthMessage(){
             return this.contacts[this.indexActiveChat].messages.length - 1;
         },
+        //Click sul contatto mostra la conversazione del contatto cliccato
         changeChat(contact, index) {
             this.indexActiveChat = index;
         },
-        sendMessage() {
-            if(this.textMessage != ''){
+        //Aggiunta di un messaggio: l’utente scrive un testo 
+        //nella parte bassa e digitando “enter” 
+        //il testo viene aggiunto al thread sopra, come messaggio verde
+        sendMessage(mic, paper) {
+            if(this.textMessage != '' && this.textMessage != " " && this.textMessage != "  "){
                 let newChatMessage = this.contacts[this.indexActiveChat].messages;
+                let newReceivedMessage = this.receivedMessage;
+                //creiamo data aggiornata
                 const currentDate = new Date();
                 const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}  ${currentDate.getHours()}:${currentDate.getMinutes()}`;
                 // Aggiungere la data e l'ora corrente al nuovo messaggio
                 this.newMessage.date = formattedDate;
                 this.receivedMessage.date = formattedDate;
-                let newReceivedMessage= this.receivedMessage;
+                newReceivedMessage.message = this.randomMessage[Math.floor(Math.random() * this.randomMessage.length)];
+                //Aggiungere stringa dentro l'input
                 this.newMessage.message = this.textMessage;
+                //inserire nell'array di messages il nuovo messagio
                 newChatMessage.push(this.newMessage);
+                //aggiungere all'array risposta
                 setTimeout(function(){
                     newChatMessage.push(newReceivedMessage);
                 }, 1000);
+                
                 this.newMessage = {
                     date: '10/01/2020 15:50:00',
                     message: '',
@@ -216,9 +228,15 @@ const { createApp } = Vue
                 };
                 this.textMessage = '';
                 this.lengthMessage();
+                const mic = document.getElementById("microphone");
+                const paper = document.getElementById("paper-send");
+                paper.style.display= "none";
+                mic.style.display= "block";
             };
-
         },
+        //Ricerca utenti: scrivendo qualcosa nell’input a sinistra, 
+        //vengono visualizzati solo i contatti 
+        //il cui nome contiene le lettere inserite
         searchContact() {
             let newSearch = this.searchText.toLowerCase();
             this.contacts.forEach((contact,index) => {
@@ -233,6 +251,8 @@ const { createApp } = Vue
                 };
             });        
         },
+        // cliccando sul messaggio appare un menu a tendina
+        // che permette di cancellare il messaggio selezionato
         deleteMessage(messsage, index) {
             if(this.contacts[this.indexActiveChat].messages.length <= 1){
                 this.contacts.splice(this.contacts[this.indexActiveChat], 1)
@@ -245,5 +265,21 @@ const { createApp } = Vue
         dateMessage(index) {
            return this.contacts[this.indexActiveChat].messages[index].date.slice(11, 16);
         },
+
+        changeIcon() {
+            if(this.textMessage != ''){
+                const mic = document.getElementById("microphone");
+                const paper = document.getElementById("paper-send");
+                paper.style.display= "block";
+                mic.style.display= "none";
+            }else{
+                const mic = document.getElementById("microphone");
+                const paper = document.getElementById("paper-send");
+                paper.style.display= "none";
+                mic.style.display= "block";
+            };
+        },
+        
+
     }
   }).mount('#app')

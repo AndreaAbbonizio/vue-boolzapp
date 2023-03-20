@@ -84,7 +84,17 @@
                     <div class="chat-contact-right">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <i class="fa-solid fa-paperclip"></i>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                        
+                        <div class="btn-group">
+                            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">Cancella chat</a></li>
+                              <li><a class="dropdown-item" href="#">Cancella messaggi</a></li>
+                              
+                            </ul>
+                          </div>
                     </div>
                 </div>
 
@@ -94,7 +104,7 @@
                     <div v-for="(singleMessage ,index) in contacts[indexActiveChat].messages" :class="singleMessage.status">
                         {{singleMessage.message}}
                         <div class="btn-group">
-                            <button  class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                            <button  class="btn btn-sm dropdown-toggle btn-message" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
                                 <ul class="dropdown-menu">
                                     <li @click="deleteMessage(singleMessage,index)">Delete Message</li>
                                     <li>Info</li>
@@ -112,8 +122,9 @@
                 <!--container keybord  -->
                 <div class="container-keybord">
                     <i class="fa-regular fa-face-smile icon-keybord"></i>
-                    <input id="keybord" @keyup.enter="sendMessage()" v-model="textMessage" type="text" placeholder="scrivi un messaggio">
-                    <i class="fa-solid fa-microphone icon-keybord"></i>
+                    <input id="keybord" @keyup.enter="sendMessage()" @keyup="changeIcon()" v-model="textMessage" type="text" placeholder="scrivi un messaggio">
+                    <i class="fa-solid fa-microphone icon-keybord" id="microphone"></i>
+                    <i @click="sendMessage()"  class="fa-solid fa-paper-plane icon-keybord" id="paper-send"></i>
                 </div>
                 <!--/container keybord  -->
 

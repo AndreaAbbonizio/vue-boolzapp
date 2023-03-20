@@ -86,6 +86,10 @@ body{
 }
 
 
+.dropdown-toggle::after {
+    display: none;
+}
+
 
 /* /user container */
 
@@ -235,9 +239,31 @@ body{
     margin: .3em;
 }
 
+.container-boolzapp .container-right .chat-contact .chat-contact-right .delete-chat{
+    position: relative;
+}
+.container-boolzapp .container-right .chat-contact .chat-contact-right .delete-chat button{
+    border: none;
+}
+.container-boolzapp .container-right .chat-contact .chat-contact-right .delete-chat .delete-text{
+    display: none;
+    background-color: #00000094;
+    position: absolute;
+    right: 0px;
+    color: white;
+    z-index: 2;
+} 
+
+.container-boolzapp .container-right .chat-contact .chat-contact-right .delete-chat .delete-text div{
+    padding: .5em;
+}
+
+
+
 
 .container-boolzapp .container-right .container-chat{
     height: calc(100% - 120px);
+    overflow-y: auto;
     background-image: url('../img/mine.jpg');
     display: flex;
     flex-direction: column;
@@ -246,7 +272,7 @@ body{
 }
 
 
-.btn{
+.btn-message{
     display: none;
     padding-left: .5em;
     padding-bottom: .5em;
@@ -314,6 +340,11 @@ body{
     color: #b1b1b1;
     margin: 0 10px;
 }
+
+.container-boolzapp .container-right .container-keybord #paper-send{
+    display: none;
+}
+
 
 .container-boolzapp .container-right .container-keybord #keybord{
     height: 30px;
