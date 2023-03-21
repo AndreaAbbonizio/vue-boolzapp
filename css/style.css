@@ -86,7 +86,7 @@ body{
 }
 
 
-.dropdown-toggle::after {
+.container-boolzapp .chat-contact .btn-group .dropdown-toggle::after {
     display: none;
 }
 

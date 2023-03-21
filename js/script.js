@@ -180,7 +180,7 @@ const { createApp } = Vue
         },
         searchText: '',
         currentContact: null,
-        randomMessage: ['Scusami domani lavoro', 'Ok, questa sera ci sono', 'Non mi  funziona il telefono'],
+        randomMessage: ['Scusami domani lavoro', 'Ok, questa sera ci sono', 'Non mi  funziona il telefono','Il divertimento è una cosa seria','Il dubbio cresce con la conoscenza', 'Ok'],
       }
     },
 
@@ -228,10 +228,7 @@ const { createApp } = Vue
                 };
                 this.textMessage = '';
                 this.lengthMessage();
-                const mic = document.getElementById("microphone");
-                const paper = document.getElementById("paper-send");
-                paper.style.display= "none";
-                mic.style.display= "block";
+                
             };
         },
         //Ricerca utenti: scrivendo qualcosa nell’input a sinistra, 
@@ -254,12 +251,8 @@ const { createApp } = Vue
         // cliccando sul messaggio appare un menu a tendina
         // che permette di cancellare il messaggio selezionato
         deleteMessage(messsage, index) {
-            if(this.contacts[this.indexActiveChat].messages.length <= 1){
-                this.contacts.splice(this.contacts[this.indexActiveChat], 1)
-            }else{
-                this.currentContact = this.contacts[this.indexActiveChat].messages
-                this.currentContact.splice(index, 1);
-            }
+            this.currentContact = this.contacts[this.indexActiveChat].messages
+            this.currentContact.splice(index, 1);
         },
 
         dateMessage(index) {
@@ -279,7 +272,9 @@ const { createApp } = Vue
                 mic.style.display= "block";
             };
         },
-        
-
+        deleteChat() {
+            this.contacts.splice(this.contacts[this.indexActiveChat], 1)
+    
+        },
     }
   }).mount('#app')
